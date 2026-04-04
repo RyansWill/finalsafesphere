@@ -1,0 +1,76 @@
+.carousel-section {
+   /* Dark background as seen in your image */
+  padding: 20px 0;
+  width: 100%;
+}
+
+.carousel-container {
+  max-width: 1366px; /* Your requested max width */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.testimonial-card {
+  padding: 40px;
+  border-radius: 12px;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* DIFFERENT COLORS FOR ODD AND EVEN CARDS */
+/* Note: nth-child targets the Swiper slides themselves */
+.swiper-slide:nth-child(odd) .testimonial-card {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.swiper-slide:nth-child(even) .testimonial-card {
+  background-color: #f3f4f6; /* Slightly off-white/gray */
+  color: #333;
+}
+
+.avatar-circle {
+  width: 70px;
+  height: 70px;
+  background-color: #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.testimonial-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 20px 0;
+  font-weight: 400;
+}
+
+.star-rating {
+  color: #fbbf24;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.author-footer {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.author-footer a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+/* Swiper Pagination Color */
+.swiper-pagination-bullet-active {
+  background: #3b82f6 !important;
+}

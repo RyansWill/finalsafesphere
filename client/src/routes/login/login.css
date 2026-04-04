@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap");
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --sea-blue: #0a1a66;
+  --blood-red: #e02231;
+  --text-blue: #2f4091;
+  --white: #ffffff;
+  --sec-white: #e2e0e0;
+  --black: #000000;
+  --orange-line: #eb7a42;
+  --orange-line_hover: #ea5308;
+}
+.login_body {
+  height: 85vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+}
+
+.login_body_wrapper {
+  display: flex;
+  justify-content: center;
+  height: 25rem;
+  width: 45rem;
+}
+
+.login_body_wrapper .logo_login {
+  background-image: url("/public/favicon.png");
+  background-size: cover; /* Makes image cover the whole div */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  padding: 0 0.5rem;
+  opacity: 30%;
+}
+
+.login_body_wrapper .login_form{
+    padding: 1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login_form h2{
+    color: var(--text-blue);
+}
+.login_form .input_group{
+    padding: 0.2rem;
+}
+.login_form input{
+    padding: 0.5rem 1rem;
+    transition: all 0.1s;
+    border-radius: 2px;
+    border: 1px solid var(--sea-blue);
+
+    &:hover{
+        border: 2px solid var(--text-blue);
+    }
+}
+
+.login_form button{
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: var(--text-blue);
+    border: 1px solid var(--text-blue);
+    color: var(--white);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.button_login{
+    padding: 1.5rem 0.2rem;
+    justify-content: space-between;
+    display: flex;
+}
+.button_login a{
+    font-size: 0.7rem;
+}
+.login-err{
+    width: 100%;
+    color: #eb7a42;
+    font-size: 0.8rem;
+    align-items: center;
+    width: 100%;
+    padding: 0.2rem;
+}
+
+@media(max-width: 720px){
+    .login_body_wrapper .logo_login{
+        display: none;
+    }
+}

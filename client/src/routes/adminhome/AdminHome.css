@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap");
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --sea-blue: #0a1a66;
+  --blood-red: #e02231;
+  --text-blue: #2f4091;
+  --white: #ffffff;
+  --sec-white: #e2e0e0;
+  --black: #000000;
+  --orange-line: #eb7a42;
+  --orange-line_hover: #ea5308;
+  --secondary: #dbd7d7;
+}
+.admin_content{
+    display: flex;
+}
+section {
+  width: 300px;
+  height: 100vh;
+  background-color: var(--black);
+}
+
+.navi_options div{
+    width: 100%;
+    padding: 1rem;
+    color: var(--white);
+    display: flex;
+    padding-left: 1.5rem;
+    align-items: center;
+    font-weight: 600;
+    color: var(--secondary);
+}
+.navi_options div i{
+    padding: 0 1rem;
+}
+.navi_options .all_shipment{
+    background-color: var(--secondary);
+    color: #000000;
+}
+
+
+
