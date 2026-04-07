@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 app.use(cors({ 
-    origin: process.env.CLIENT_URL, 
+    origin: ["https://express-safesphere.com", "http://express-safesphere.com"], 
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true }));
 app.use(express.json());
