@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
+import prisma from "./lib/prisma.js";
 
 import authRoute from "./routes/auth.route.js";
 import testRoute from "./routes/test.route.js";
@@ -30,7 +31,15 @@ app.use((req,res) => {
   res.sendFile(path.join(__dirname, "dist/index.html"));
 })
 
-
+setInterval(async () => {
+  try {
+    // This simple query keeps the connection tunnel "warm"
+    await prisma.$queryRaw`SELECT 1`;
+    console.log("SafeSphere Heartbeat: Connection stays hot 🔥");
+  } catch (err) {
+    console.log("Heartbeat: Database was asleep, waking it up...");
+  }
+}, 600000);
 
 app.listen(8800, () => {
   console.log("Server is Running");
