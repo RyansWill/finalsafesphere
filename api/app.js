@@ -31,15 +31,6 @@ app.use((req,res) => {
 })
 
 
-setInterval(async () => {
-  try {
-    // A simple ping to the DB to keep the tunnel open
-    await prisma.$queryRaw`SELECT 1`; 
-    console.log("SafeSphere Heartbeat: Active");
-  } catch (e) {
-    console.log("Heartbeat failed, waking up DB...");
-  }
-}, 600000); // Runs every 10 minutes
 
 app.listen(8800, () => {
   console.log("Server is Running");
