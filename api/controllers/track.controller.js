@@ -67,39 +67,21 @@ export const getTracks = async (req, res) => {
 
 export const getTrack = async (req, res) => {
   const { trackingNumber } = req.body;
-
-  if (!trackingNumber) {
-    return res.status(400).json({ message: "Tracking number is required" });
-  }
-
   try {
-    // 1. Create a timeout promise
-    const timeout = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("Database timeout")), 8000) // 8 seconds
-    );
-
-    // 2. Race the Prisma query against the timeout
-    const trackInfo = await Promise.race([
-      prisma.trackInfo.findUnique({
-        where: { trackingNumber },
-      }),
-      timeout
-    ]);
-
+    if (!trackingNumber) {
+      return res.status(400).json({ message: "Tracking number is required" });
+    }
+    const trackInfo = await prisma.trackInfo.findUnique({
+      where: { trackingNumber },
+    });
+    // We must send a 404 to tell the frontend the ID is available instead of in the catch block.
     if (!trackInfo) {
       return res.status(404).json({ message: "Wrong Tracking number" });
     }
-
-    return res.status(200).json(trackInfo);
-
+    res.status(200).json(trackInfo);
   } catch (err) {
-    console.error("DATABASE ERROR:", err.message);
-    
-    if (err.message === "Database timeout") {
-       return res.status(504).json({ message: "Server is waking up, please try again in 10 seconds." });
-    }
-    
-    return res.status(500).json({ message: "A database error occurred" });
+    console.log(err);
+    res.status(500).json({ message: "Server error occured" });
   }
 };
 
