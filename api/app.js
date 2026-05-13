@@ -41,6 +41,8 @@ setInterval(async () => {
   }
 }, 600000);
 
+console.log("DB URL Check:", process.env.DATABASE_URL ? "Exists" : "MISSING");
+
 app.listen(8800, () => {
   console.log("Server is Running");
 });
