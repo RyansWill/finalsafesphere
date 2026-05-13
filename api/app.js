@@ -1,4 +1,4 @@
-import "dotenv";
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -30,6 +30,16 @@ app.use((req,res) => {
   res.sendFile(path.join(__dirname, "dist/index.html"));
 })
 
+
+setInterval(async () => {
+  try {
+    // A simple ping to the DB to keep the tunnel open
+    await prisma.$queryRaw`SELECT 1`; 
+    console.log("SafeSphere Heartbeat: Active");
+  } catch (e) {
+    console.log("Heartbeat failed, waking up DB...");
+  }
+}, 600000); // Runs every 10 minutes
 
 app.listen(8800, () => {
   console.log("Server is Running");
