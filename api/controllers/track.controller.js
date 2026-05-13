@@ -80,19 +80,24 @@ export const getTrack = async (req, res) => {
     }
     res.status(200).json(trackInfo);
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Server error occured" });
+    console.error(err);
+    res.status(500).json({
+      message: "Connection Error",
+      errorName: err.name,
+      errorMessage: err.message,
+      errorCode: err.code,
+    });
   }
 };
 
 export const updateTrack = async (req, res) => {
   const { id: _, ...Data } = req.body;
-  const trakingdata = Data
+  const trakingdata = Data;
   console.log(trakingdata);
   try {
     const updatedTrack = await prisma.trackInfo.update({
-      where: { trackingNumber:trakingdata.trackingNumber },
-      data:trakingdata,
+      where: { trackingNumber: trakingdata.trackingNumber },
+      data: trakingdata,
     });
 
     res.status(200).json(updatedTrack);
